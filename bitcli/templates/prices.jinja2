@@ -1,0 +1,19 @@
+ Coin   | Value
+--------+------------
+{% for items in results -%}
+    {{ ' %-7s' % items[0] }}| {{ fiat }}
+        {%- for item in items -%}
+            {%- if fiat == '€' -%}
+                {{ ' %s' % item.EUR }} 
+            {%- endif -%}
+            {%- if fiat == '$' -%}
+                {{ ' %s' % item.USD }} 
+            {%- endif -%}
+            {%- if fiat == 'CHF' -%}
+                {{ ' %s' % item.CHF }} 
+            {%- endif -%}
+            {%- if fiat == '£' -%}
+                {{ ' %s' % item.GBP }} 
+            {%- endif -%}
+    {%- endfor %}
+{% endfor %}

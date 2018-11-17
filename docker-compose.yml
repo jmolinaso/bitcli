@@ -1,0 +1,13 @@
+version: "3"
+services:
+    bitcli:
+        image: "bitcli:dev"
+        build:
+            context: .
+            dockerfile: Dockerfile
+        hostname: bitcli
+        stdin_open: true
+        tty: true
+        working_dir: '/bitcli-dev'
+        volumes:
+            - ".:/bitcli-dev"
