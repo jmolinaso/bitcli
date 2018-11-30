@@ -1,4 +1,4 @@
 cement==3.0.2
-jinja2
+tabulete
 pyyaml
 colorlog

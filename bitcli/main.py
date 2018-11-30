@@ -25,7 +25,7 @@ class BitCLI(App):
         extensions = [
             'yaml',
             'colorlog',
-            'jinja2',
+            'tabulate',
         ]
 
         # configuration handler
@@ -38,7 +38,7 @@ class BitCLI(App):
         log_handler = 'colorlog'
 
         # set the output handler
-        output_handler = 'jinja2'
+        output_handler = 'tabulate'
 
         # register handlers
         handlers = [

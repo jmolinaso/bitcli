@@ -19,7 +19,7 @@ class Base(Controller):
         description = 'Show prices in the console from Bitpanda'
 
         # text displayed at the bottom of --help output
-        epilog = 'Usage: bitcli prices --fiat EUR'
+        epilog = 'Usage: bitcli prices [--fiat|-f EUR|USD|CHF|GBP]'
 
         # controller level arguments. ex: 'bitcli --version'
         arguments = [
@@ -55,21 +55,19 @@ class Base(Controller):
         self.app.log.debug('Data got %s' % response.data)
 
         ret_json = json.loads(response.data)
-
-        data = {
-            'results' : ret_json.items(),
-            'fiat' : '€'
-        }
-
+        headers = ['Coin', 'Price']
         options = {
             'EUR': '€',
             'USD': '$',
             'CHF': 'CHF',
             'GBP': '£',
-        }        
+        }
+
         if self.app.pargs.fiat in options.keys():
-            data['fiat'] = options[self.app.pargs.fiat]
+            fiat = self.app.pargs.fiat
         else:
+            fiat = 'EUR'
             self.app.log.info('No FIAT or unknown, showing values in EUR')
 
-        self.app.render(data, 'prices.jinja2')
+        data = [ [x, '{0} {1}'.format(options[fiat],ret_json[x][fiat])] for x in ret_json]
+        self.app.render(data, headers=headers)

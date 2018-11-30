@@ -16,7 +16,7 @@ setup(
     long_description_content_type='text/markdown',
     author='Julio Molina Soler',
     author_email='julio@molinasoler.xyz',
-    url='https://github.com/johndoe/myapp/',
+    url='https://github.com/jmolinaso/bitcli/',
     license='MIT',
     packages=find_packages(exclude=['ez_setup', 'tests*']),
     package_data={'bitcli': ['templates/*']},
