@@ -1,5 +1,5 @@
 cement==3.0.2
-tabulete
+tabulate
 pyyaml
 colorlog
 urllib3
